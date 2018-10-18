@@ -7,18 +7,31 @@ var bubble=[];
 
 class Bubble{
 
-constructor(tempX, tempY, diameterW){
+constructor(diameterW, tempShade){
 
-this.x=tempX;
-this.y=tempY;
-this.w= diameterW;
+	this.w= diameterW;
+	this.position=createVector(random(width), random(height));
+	this.acceleration =createVector();
+	this.velocity=createVector();
+	this.maxSpeed=1;
+	this.shade=tempShade;
 
 
 }
 
-ellipse(this.x, this.y, this.w, this.w);
 
+display(){
 
-constrain (diameterW, 10,125);
+	noStroke();
+	fill(this.shade);
+
+	//how to create certain limits within the 
+
+	for (var i = 0; i < 1000; i++) {
+		//ellipse(this.position.x, this.position.y, this.w, this.w);
+		ellipse(this.position.x, this.position.y, this.w, this.w);
+	}
+	
+
 
 }
