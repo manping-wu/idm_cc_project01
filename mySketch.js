@@ -1,17 +1,16 @@
-//Project 1
-//Checklist I want to accomplished in this project
-//1. How to do specks all over the screen
-//2. how to change the graphics fill with the coordinates with the color
-//3. how lines can move according to the mouseX and mouse Y
-//4. how to make things changes over time. 
-
-
 
 //seaweed globalvariables
-var inc =0.02;
+var incS =0.05;
 var scl =28;
 var cols,rows;
 var zoff =0;
+
+
+//perlin graph
+var xoff  =0;
+var start =0;
+var incG =0.002;
+
 
 
 
@@ -29,12 +28,39 @@ function setup(){
 function draw(){
 
 background(255);
+
+//function seaweed
 seaweed();
+
+
+//perlin graph
+stroke(0);
+stroke(10);
+noFill();
+beginShape();
+var xoff = start;
+for (var x = 0 ; x <width; x++) {
+	stroke(0);
+	var y = noise(xoff)*height;
+	vertex(x,y);
+	xoff+=incG;
+
+}
+endShape();
+
+start+=incG;
+
 
 
 
 
 }
+
+
+
+
+
+
 
 
 function seaweed(){
@@ -50,7 +76,7 @@ for (var x=0; x<cols; x++){
 	var index = (x+y*width)*4;
 	var angle =noise(xoff,yoff,zoff)* TWO_PI;
 	var v=p5.Vector.fromAngle(angle);
-	xoff +=inc;
+	xoff +=incS;
 	
 
 	//make the colors move according to the x/y coordinates
@@ -61,12 +87,12 @@ for (var x=0; x<cols; x++){
 	push();
 	translate(x*scl,y*scl);
 	rotate(v.heading());
-	line(cols,0,scl,0);
+	line(0,0,scl,0);
 	pop();
 
 }
 
-yoff+=inc;
+yoff+=incS;
 
 zoff +=0.0001;
 
