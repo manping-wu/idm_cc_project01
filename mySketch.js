@@ -3,11 +3,7 @@
 //1. How to do specks all over the screen
 //2. how to change the graphics fill with the coordinates with the color
 //3. how lines can move according to the mouseX and mouse Y
-//
-
-
-
-
+//4. how to make things changes over time. 
 
 
 
@@ -39,12 +35,6 @@ seaweed();
 
 
 }
-
-
-
-
-
-
 
 
 function seaweed(){
