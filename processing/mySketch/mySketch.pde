@@ -22,10 +22,6 @@ for (int i=0; i<horseshoe.length; i++){
 
 //---------draw
 void draw(){
-  
-  
-  
-  
 background(255);
  
 spacesSquare();
@@ -49,10 +45,19 @@ translate(80,95);
  horseshoe[i].display(); 
 }
   
+  pushMatrix();
+  translate(550,0);
+  ellipse(100,100,900,100);
+  popMatrix();
+  
+  
  }
  
  
  
+ 
+ 
+ //background for squares
  void spacesSquare (){
    
     
