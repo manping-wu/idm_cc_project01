@@ -1,78 +1,79 @@
-Horseshoe [] horseshoe = new Horseshoe [10];
-//hiii
+//NYU IDM Creative Coding
+//PROJECT 01
+//Man-Ping Wu
 
-float r,g,b;
+
+
+//arraylist for bubbles class
+ArrayList <Bubbles> bubs;
+
+//array for worm class
+Worm [] worm= new Worm [5];
+
+// global variables for colors
+float r, g, b;
 
 
 //---------setup
-void setup (){
-  
- size(900,900);
- 
- 
-// horseshoe parameter
-for (int i=0; i<horseshoe.length; i++){
-  horseshoe [i] = new Horseshoe (random(30,60), random(10,20), random(0,100), random(100,200));
-}
+void setup () {
+
+  size(displayWidth, displayHeight); //size of the window
+  background(20); //background color
 
 
-  
+  //setting the arraylist for the bubbles 
+  bubs = new ArrayList<Bubbles>();
+
+  //setting the worm parameters with for loop
+  for (int i = 0; i<worm.length;i++){
+   worm [i] = new Worm (5,i);
+  }
+
 }
 
 
 //---------draw
-void draw(){
-background(255);
+void draw() {
  
-spacesSquare();
 
-fill(200);
-noStroke();
-ellipse(750,900,900,900);
-fill(0);
-ellipse(750,900,850,850);
+//adding bubble class with loop
+  for(int i = 0; i<4; i++){
+    
+   //declare local vector variables 
+   PVector cursorB;
+   PVector v;
+   PVector a;
+   
+   a = new PVector (0,0); //setting the acceleration values for the constructor
+   v = new PVector (0,0.03); //setting the velocity values for the constructor
+   cursorB = new PVector (mouseX, mouseY);//setting the location values for the constructor
+   bubs.add(new Bubbles(cursorB, v, a)); // add the bubble class with the local vector variables
+  }
 
-
-
-//horse shoe class applied
-//for (int i=0; i<horseshoe.length; i++){
-// horseshoe[i].display(); 
-//}
-
-
-for (int i=0; i<horseshoe.length; i++){
-translate(80,95);
- horseshoe[i].display(); 
-}
-  
+  //keeps the graphics nested and interference from other elements. 
   pushMatrix();
-  translate(550,0);
-  ellipse(100,100,900,100);
+  //for loops for the bubble classes from the arraylist
+  for (Bubbles bubbb: bubs){
+  bubbb.update(); //update function from class
+  bubbb.display();//display function from class
+  
+  }
   popMatrix();
-  
-  
- }
  
+ //worm class to show the display function
+  for (int i=0; i<worm.length; i++){
+   worm[i].display(); 
+  }
  
+  }
+
+
+
+
+
+//-------keypress: to erase the background and reset  
+void keyPressed(){
+
+ background(20);
  
- 
- 
- //background for squares
- void spacesSquare (){
-   
-    
-    for(int xSquare =1; xSquare<width; xSquare+=1){
-    for(int y =1; y<height; y+=1){
-    
-    strokeWeight(1);  
-    rect(xSquare,y,10,10);
-    
-    
-    xSquare+=1;
-    y+=1;
-    
-    
-    }
-   
- }
- }
+}
