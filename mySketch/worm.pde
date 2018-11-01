@@ -37,7 +37,7 @@ class Worm {
         ellipse (currentX, currentY, thickness, thickness);
 
         //map the thickness by the mouseX depending of the width and size of the ellipse
-        thickness= map(mouseX, 0, width, 0.5,10);
+        thickness= map(mouseX, 0, width, 0.5,9);
       }
     }
   //update that xy equal to the noise variables
